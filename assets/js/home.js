@@ -20,7 +20,7 @@
 
   function restart() {
     clearInterval(timer);
-    timer = setInterval(() => show(index + 1), 6500);
+    timer = setInterval(() => show(index + 1), 3000);
   }
 
   prev?.addEventListener('click', () => { show(index - 1); restart(); });
