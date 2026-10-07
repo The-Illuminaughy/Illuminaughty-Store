@@ -13,13 +13,33 @@
       .replace(/'/g, '&#039;');
   }
 
+  function formatLastUpdated(value) {
+    const raw = String(value ?? '').trim();
+    if (!raw) return '';
+
+    const match = raw.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})(?::\d{2})?\s+(EDT|EST)$/i);
+    if (!match) return `Price Last Updated on ${escapeHtml(raw)}`;
+
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const year = match[1];
+    const monthIndex = Number(match[2]) - 1;
+    const day = Number(match[3]);
+    let hour = Number(match[4]);
+    const minute = match[5];
+    const zone = match[6].toUpperCase();
+    const period = hour >= 12 ? 'P.M.' : 'A.M.';
+    hour = hour % 12 || 12;
+
+    return `Price Last Updated on ${day} ${months[monthIndex]} ${year} at ${hour}:${minute} ${period} ${zone}`;
+  }
+
   function render(products) {
     grid.innerHTML = products.map(product => {
       const image = product.image_url
         ? `<div class="product-media"><img src="${escapeHtml(product.image_url)}" alt="${escapeHtml(product.name)}" loading="lazy"></div>`
         : `<div class="product-media product-media--empty" aria-label="Product image pending">Image coming soon</div>`;
       const price = product.price ? `$${escapeHtml(product.price)}` : 'See Amazon for current price';
-      const updated = product.last_updated ? `Price last updated: ${escapeHtml(product.last_updated)}` : '';
+      const updated = product.last_updated ? formatLastUpdated(product.last_updated) : '';
       return `
         <article class="product-card">
           ${image}
