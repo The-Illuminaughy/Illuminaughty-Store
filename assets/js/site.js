@@ -4,6 +4,26 @@
   const MAIL = 'theilluminaughtystore@gmail.com';
   const defaultSubject = document.body.dataset.emailSubject || 'RE: Illuminaughty®';
 
+  function ensureFavicons() {
+    const definitions = [
+      { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+      { rel: 'icon', href: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { rel: 'icon', href: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { rel: 'icon', href: '/favicon-48x48.png', type: 'image/png', sizes: '48x48' },
+      { rel: 'icon', href: '/favicon-192x192.png', type: 'image/png', sizes: '192x192' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
+      { rel: 'manifest', href: '/site.webmanifest' }
+    ];
+
+    document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"], link[rel="manifest"]').forEach(link => link.remove());
+
+    definitions.forEach(def => {
+      const link = document.createElement('link');
+      Object.entries(def).forEach(([key, value]) => link.setAttribute(key, value));
+      document.head.appendChild(link);
+    });
+  }
+
 
 
   const AGE_GATE_KEY = 'illuminaughty_age_gate';
@@ -145,6 +165,7 @@
   }
 
   async function init() {
+    ensureFavicons();
     showAgeGate();
     await Promise.all([
       injectShell('#site-header', '/shell/header.html'),
