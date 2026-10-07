@@ -283,3 +283,90 @@ h1, h2, h3 { line-height: 1.15; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
 }
+
+
+/* Site-wide 18+ age-attestation gate */
+html.age-gate-active,
+html.age-gate-active body { overflow: hidden; }
+.age-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(0,0,0,.96);
+  backdrop-filter: blur(12px);
+}
+.age-gate__panel {
+  width: min(560px, 100%);
+  max-height: calc(100vh - 44px);
+  overflow-y: auto;
+  padding: clamp(24px, 5vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #101010;
+  box-shadow: 0 24px 80px rgba(0,0,0,.65);
+  text-align: center;
+}
+.age-gate__logo {
+  width: min(240px, 72%);
+  height: auto;
+  margin: 0 auto 22px;
+}
+.age-gate__panel h1 { margin: 0 0 12px; font-size: clamp(2rem, 6vw, 3rem); }
+.age-gate__panel > p { margin: 0 auto 24px; color: #c7c7c7; max-width: 470px; }
+.age-gate__form { display: grid; gap: 18px; text-align: left; }
+.age-gate__dob {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 10px;
+}
+.age-gate__dob legend { width: 100%; margin-bottom: 8px; font-weight: 800; }
+.age-gate__dob label { display: grid; gap: 6px; color: #c8c8c8; font-size: .82rem; font-weight: 700; }
+.age-gate__dob select,
+.age-gate__dob input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #070707;
+  color: #fff;
+  outline: none;
+}
+.age-gate__dob select:focus,
+.age-gate__dob input:focus { border-color: rgba(255,255,255,.5); }
+.age-gate__certify {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #d4d4d4;
+  font-size: .88rem;
+  line-height: 1.5;
+}
+.age-gate__certify input { margin-top: 4px; flex: 0 0 auto; }
+.age-gate__enter {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  background: #f3f3f3;
+  color: #050505;
+  font-weight: 800;
+  cursor: pointer;
+}
+.age-gate__enter:hover,
+.age-gate__enter:focus-visible { background: #fff; }
+.age-gate__enter:disabled { opacity: .45; cursor: not-allowed; }
+.age-gate__message { min-height: 1.4em; margin: 0; color: #d7d7d7; text-align: center; font-size: .9rem; }
+
+@media (max-width: 520px) {
+  .age-gate { padding: 12px; }
+  .age-gate__panel { max-height: calc(100vh - 24px); border-radius: 15px; padding: 24px 18px; }
+  .age-gate__dob { grid-template-columns: 1fr 1fr; }
+  .age-gate__dob label:last-child { grid-column: 1 / -1; }
+}
