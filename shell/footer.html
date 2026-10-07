@@ -1,4 +1,129 @@
-<footer class="site-footer" role="contentinfo">
+<style>
+  .ill-footer {
+    background: #090909;
+    border-top: 1px solid rgba(255,255,255,.10);
+  }
+
+  .ill-footer .site-footer__grid {
+    display: grid;
+    grid-template-columns: minmax(0,1.1fr) minmax(0,1fr) minmax(220px,.85fr);
+    gap: 40px;
+    align-items: center;
+    padding-top: 44px;
+    padding-bottom: 34px;
+  }
+
+  .ill-footer .footer-logo {
+    max-width: 210px;
+    width: 100%;
+    height: auto;
+  }
+
+  .ill-footer .footer-brand-name {
+    margin-top: 14px;
+  }
+
+  .ill-footer .footer-contact {
+    line-height: 1.8;
+  }
+
+  .ill-footer .footer-social-brand {
+    text-align: right;
+  }
+
+  .ill-footer .footer-secondary-logo {
+    display: inline-block;
+    max-width: 210px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .ill-footer .footer-social-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .ill-footer .footer-social-link {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255,255,255,.04);
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+
+  .ill-footer .footer-social-link:hover,
+  .ill-footer .footer-social-link:focus-visible {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.10);
+    border-color: rgba(255,255,255,.34);
+  }
+
+  .ill-footer .footer-social-link svg {
+    width: 19px;
+    height: 19px;
+    fill: currentColor;
+  }
+
+  .ill-footer .footer-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .ill-footer .footer-ownership {
+    margin-left: auto;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+  }
+
+  .ill-footer .footer-ownership a {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 800px) {
+    .ill-footer .site-footer__grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      text-align: center;
+    }
+
+    .ill-footer .footer-social-brand {
+      text-align: center;
+    }
+
+    .ill-footer .footer-social-links {
+      justify-content: center;
+    }
+
+    .ill-footer .footer-bottom-row {
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .ill-footer .footer-ownership {
+      margin-left: 0;
+      align-items: center;
+      text-align: center;
+    }
+  }
+</style>
+
+<footer class="site-footer ill-footer" role="contentinfo">
   <div class="shell-width site-footer__grid">
     <section class="footer-brand" aria-label="Illuminaughty Store">
       <a href="/" class="footer-logo-link" aria-label="Illuminaughty Store home">
@@ -16,6 +141,26 @@
       <a class="footer-email" href="mailto:theilluminaughtystore@gmail.com">📧 theilluminaughtystore@gmail.com</a><br>
       <a href="tel:+18006749918">📱 (800) 674-9918</a>
     </section>
+
+    <section class="footer-social-brand" aria-label="Illuminaughty social media">
+      <a href="/" aria-label="Illuminaughty Store home">
+        <img src="/IlluminaughtyLogo00.png" alt="Illuminaughty" class="footer-secondary-logo">
+      </a>
+
+      <div class="footer-social-links" aria-label="Social media">
+        <a class="footer-social-link" href="https://www.facebook.com/illuminaughttyshop/" target="_blank" rel="noopener noreferrer" aria-label="Illuminaughty on Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.6 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.7-1.6H17V4.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H7.1v3.2H10V22h3.6z"/></svg>
+        </a>
+
+        <a class="footer-social-link" href="https://x.com/illuminaughtyXX" target="_blank" rel="noopener noreferrer" aria-label="Illuminaughty on X" title="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.2 2H21l-6.1 7 7.1 13h-5.6l-4.4-5.8L6.9 22H4l6.6-7.6L3.8 2h5.7l4 5.3L18.2 2zm-1 17.7h1.6L8.6 4.2H6.9l10.3 15.5z"/></svg>
+        </a>
+
+        <a class="footer-social-link" href="https://www.instagram.com/illuminaughtystore/" target="_blank" rel="noopener noreferrer" aria-label="Illuminaughty on Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.4 2h9.2A5.4 5.4 0 0 1 22 7.4v9.2a5.4 5.4 0 0 1-5.4 5.4H7.4A5.4 5.4 0 0 1 2 16.6V7.4A5.4 5.4 0 0 1 7.4 2zm0 2A3.4 3.4 0 0 0 4 7.4v9.2A3.4 3.4 0 0 0 7.4 20h9.2a3.4 3.4 0 0 0 3.4-3.4V7.4A3.4 3.4 0 0 0 16.6 4H7.4zm9.7 1.5a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+        </a>
+      </div>
+    </section>
   </div>
 
   <div class="shell-width footer-legal-wrap">
@@ -29,16 +174,18 @@
     <p class="footer-copyright">
       <a href="/copyright/">Copyright © 2026 Illuminaughty® Store. All Rights Reserved.</a>
     </p>
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+
+    <div class="footer-bottom-row">
       <div>
         <p class="footer-trademark">
-          Illuminaughty® is a <a href="https://tsdr.uspto.gov/documentviewer?caseId=sn98612480&docId=ORC20250522023535#docIndex=0&page=1" target="_blank" rel="noopener noreferrer">Registered Trademark</a> in the United States &amp; Other Countries
+          Illuminaughty® is a <a href="https://tsdr.uspto.gov/documentviewer?caseId=sn98612480&amp;docId=ORC20250522023535#docIndex=0&amp;page=1" target="_blank" rel="noopener noreferrer">Registered Trademark</a> in the United States &amp; Other Countries
         </p>
         <p class="footer-operator">Operated by Illuminaughty, LLC</p>
       </div>
-      <div style="margin-left:auto;text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end;">
-        <a href="/eeo/" style="white-space:nowrap;">🇺🇸 Veteran Owned</a>
-        <a href="/eeo/" style="white-space:nowrap;">🖤 Female Owned</a>
+
+      <div class="footer-ownership">
+        <a href="/eeo/">🇺🇸 Veteran Owned</a>
+        <a href="/eeo/">🖤 Female Owned</a>
       </div>
     </div>
   </div>
