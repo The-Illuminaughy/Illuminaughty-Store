@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Illuminaughty® Store</title>
+  <meta name="description" content="Shop Illuminaughty® products through our Amazon affiliate storefront and sign up for Illuminaughty® updates.">
+  <link rel="icon" href="/IlluminaughtyLogo.webp">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body data-email-subject="RE: Illuminaughty®">
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" aria-label="Illuminaughty Store featured banners">
+      <div class="hero-viewport">
+        <div class="hero-track">
+          <a class="hero-slide" href="/estore/"><img src="/IlluminaughtyBanner01.png" alt="Shop the Illuminaughty Store"></a>
+          <a class="hero-slide" href="/estore/"><img src="/IlluminaughtyForHer02.webp" alt="Illuminaughty for Her"></a>
+          <a class="hero-slide" href="/estore/"><img src="/IlluminaughtyforCouples03.webp" alt="Illuminaughty for Couples"></a>
+          <a class="hero-slide" href="/estore/"><img src="/IlluminaughtyforHim04.webp" alt="Illuminaughty for Him"></a>
+        </div>
+      </div>
+      <button class="hero-control prev" type="button" aria-label="Previous banner">‹</button>
+      <button class="hero-control next" type="button" aria-label="Next banner">›</button>
+      <div class="hero-dots" aria-label="Hero banner navigation">
+        <button class="hero-dot" type="button" aria-label="Banner 1" aria-current="true"></button>
+        <button class="hero-dot" type="button" aria-label="Banner 2" aria-current="false"></button>
+        <button class="hero-dot" type="button" aria-label="Banner 3" aria-current="false"></button>
+        <button class="hero-dot" type="button" aria-label="Banner 4" aria-current="false"></button>
+      </div>
+    </section>
+
+    <section class="signup-section">
+      <div class="shell-width">
+        <div class="signup-card">
+          <div class="eyebrow">Illuminaughty®</div>
+          <h1>Stay on the Naughty List</h1>
+          <p>Sign up for updates from Illuminaughty®.</p>
+          <form id="signup-form" class="signup-form">
+            <label class="field-label" for="signup-name">Name</label>
+            <input id="signup-name" name="name" type="text" autocomplete="name" maxlength="150" required>
+            <label class="field-label" for="signup-email">Email</label>
+            <input id="signup-email" name="email" type="email" autocomplete="email" required>
+            <label class="consent-row">
+              <input type="checkbox" name="marketing_consent" required>
+              <span>I agree to receive marketing emails and product updates from Illuminaughty®.</span>
+            </label>
+            <button class="button-primary" type="submit">Join Illuminaughty®</button>
+            <div id="signup-message" class="form-message" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/home.js" defer></script>
+</body>
+</html>
