@@ -25,5 +25,43 @@
   <div id="site-footer"></div>
   <script src="/assets/js/site.js" defer></script>
   <script src="/assets/js/estore.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('product-grid');
+      if (!grid) return;
+
+      const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+      function formatPriceUpdatedText(root) {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+
+        nodes.forEach(node => {
+          const value = node.nodeValue || '';
+          const match = value.match(/Price\s+last\s+updated:\s*(\d{4})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})(?::\d{2})?\s+(EDT|EST)/i);
+          if (!match) return;
+
+          const year = Number(match[1]);
+          const month = Number(match[2]);
+          const day = Number(match[3]);
+          let hour = Number(match[4]);
+          const minute = match[5];
+          const zone = match[6].toUpperCase();
+
+          const period = hour >= 12 ? 'P.M.' : 'A.M.';
+          hour = hour % 12 || 12;
+
+          const formatted = `Price Last Updated on ${day} ${monthNames[month - 1]} ${year} at ${hour}:${minute} ${period} ${zone}`;
+          node.nodeValue = value.replace(match[0], formatted);
+        });
+      }
+
+      formatPriceUpdatedText(grid);
+
+      const observer = new MutationObserver(() => formatPriceUpdatedText(grid));
+      observer.observe(grid, { childList: true, subtree: true });
+    });
+  </script>
 </body>
 </html>
